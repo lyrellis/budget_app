@@ -1,3 +1,7 @@
+#class Ledger:
+#    def __init__(self, category)
+#        self.ledger = category
+
 class Category:
     def __init__(self, category):
         self.category = category
@@ -8,8 +12,9 @@ class Category:
         category_str = f'{self.category:*^30}'
         for transaction in self.ledger:
             amount, description = transaction
-            category_str += f'\n{description:<23}{amount:>7}'
-        category_str += f'\nTotal: {self.total}'
+            amount_as_currency = f'{float(amount):.2f}'
+            category_str += f'\n{description[:23]:<23}{amount_as_currency:>7}'
+        category_str += f'\nTotal: {self.total:.2f}'
         return category_str
 
     def deposit(self, amount, description = ''):
